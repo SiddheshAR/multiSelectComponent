@@ -9,7 +9,7 @@ function App() {
 
   const [selectedList,setSeletecd] = useState<string[]>([]);
   const [inputField,setInputField]=useState<string>('');
-  const [menuToggle,setMenuToggle]=useState(false);
+  const [menuToggle,setMenuToggle]=useState<boolean>(false);
   function handleInput(e){
     console.log(e.target.value);
     setInputField(e.target.value);
@@ -27,16 +27,16 @@ function App() {
     "Vlog",
   ];
 
-  const filteredTags= tags.filter(
+  const filteredTags:string[]= tags.filter(
     (item)=>
       item?.toLocaleLowerCase()?.includes(inputField?.toLocaleLowerCase()?.trim())
     )
     const AddItem = (e:string)=>{
       setSeletecd((prev)=>[...prev,e])
     }
-    const handleDelete = (i)=>{
+    const handleDelete = (i:number)=>{
       // console.log(selectedList[i])
-      let tempList =[...selectedList];
+      const tempList:string[] =[...selectedList];
       tempList.splice(i,1);
       // let currState=selectedList.slice(i,1);
       setSeletecd([...tempList]);
